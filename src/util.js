@@ -1,129 +1,73 @@
-/**
- * Utilties
- */
+/* @flow */
 
-// export default for holding the Vue reference
-const exports = {}
-export default exports
+const inBrowser =
+  typeof window !== 'undefined' &&
+  Object.prototype.toString.call(window) !== '[object Object]'
+const UA = inBrowser && window.navigator.userAgent.toLowerCase()
+const isIE9 = UA && UA.indexOf('msie 9.0') > 0
 
+export function getClass (el: any): string {
+  let classname: string | Object = el.className
+  if (typeof classname === 'object') {
+    classname = classname.baseVal || ''
+  }
+  return classname
+}
 
-/**
- * warn
- *
- * @param {String} msg
- * @param {Error} [err]
- *
- */
+export function setClass (el: any, cls: string): void {
+  if (isIE9 && !/svg$/.test(el.namespaceURI)) {
+    el.className = cls
+  } else {
+    el.setAttribute('class', cls)
+  }
+}
 
-export function warn (msg, err) {
-  if (window.console) {
-    console.warn('[vue-validator] ' + msg)
-    if (err) {
-      console.warn(err.stack)
+export function addClass (el: any, cls: string): void {
+  if (el.classList) {
+    el.classList.add(cls)
+  } else {
+    const cur = ' ' + getClass(el) + ' '
+    if (cur.indexOf(' ' + cls + ' ') < 0) {
+      setClass(el, (cur + cls).trim())
     }
   }
 }
 
-/**
- * empty
- *
- * @param {Array|Object} target
- * @return {Boolean}
- */
-
-export function empty (target) {
-  if (target === null || target === undefined) { return true }
-
-  if (Array.isArray(target)) {
-    if (target.length > 0) { return false }
-    if (target.length === 0) { return true }
-  } else if (exports.Vue.util.isPlainObject(target)) {
-    for (let key in target) {
-      if (exports.Vue.util.hasOwn(target, key)) { return false }
+export function removeClass (el: any, cls: string): void {
+  if (el.classList) {
+    el.classList.remove(cls)
+  } else {
+    let cur = ' ' + getClass(el) + ' '
+    const tar = ' ' + cls + ' '
+    while (cur.indexOf(tar) >= 0) {
+      cur = cur.replace(tar, ' ')
     }
+    setClass(el, cur.trim())
   }
-
-  return true
-}
-
-/**
- * each
- *
- * @param {Array|Object} target
- * @param {Function} iterator
- * @param {Object} [context]
- */
-
-export function each (target, iterator, context) {
-  if (Array.isArray(target)) {
-    for (let i = 0; i < target.length; i++) {
-      iterator.call(context || target[i], target[i], i)
-    }
-  } else if (exports.Vue.util.isPlainObject(target)) {
-    const hasOwn = exports.Vue.util.hasOwn
-    for (let key in target) {
-      if (hasOwn(target, key)) {
-        iterator.call(context || target[key], target[key], key)
-      }
-    }
+  if (!el.className) {
+    el.removeAttribute('class')
   }
 }
 
-/**
- * pull
- *
- * @param {Array} arr
- * @param {Object} item
- * @return {Object|null}
- */
+export function toggleClasses (el: any, key: string, fn: Function): void {
+  if (!el) { return }
 
-export function pull (arr, item) {
-  let index = exports.Vue.util.indexOf(arr, item)
-  return ~index ? arr.splice(index, 1) : null
-}
-
-/**
- * attr
- *
- * @param {Element} el
- * @param {String} name
- * @return {String|null}
- */
-
-export function attr (el, name) {
-  return el ? el.getAttribute(name) : null
-}
-
-/**
- * trigger
- *
- * @param {Element} el
- * @param {String} event
- * @param {Object} [args]
- */
-
-export function trigger (el, event, args) {
-  let e = document.createEvent('HTMLEvents')
-  e.initEvent(event, true, false)
-
-  if (args) {
-    for (let prop in args) {
-      e[prop] = args[prop]
-    }
+  key = key.trim()
+  if (key.indexOf(' ') === -1) {
+    fn(el, key)
+    return
   }
 
-  // Due to Firefox bug, events fired on disabled
-  // non-attached form controls can throw errors
-  try { el.dispatchEvent(e) } catch (e) {}
+  const keys = key.split(/\s+/)
+  for (let i = 0, l = keys.length; i < l; i++) {
+    fn(el, keys[i])
+  }
 }
 
-/**
- * Forgiving check for a promise
- *
- * @param {Object} p
- * @return {Boolean}
- */
-
-export function isPromise (p) {
-  return p && typeof p.then === 'function'
+export function memoize (fn: Function): Function {
+  const cache = Object.create(null)
+  return function memoizeFn (id: string, ...args): any {
+    const hit = cache[id]
+    return hit || (cache[id] = fn(...args))
+  }
 }

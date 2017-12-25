@@ -1,3 +1,153 @@
+<a name="3.0.0-alpha.2"></a>
+# [3.0.0-alpha.2](https://github.com/kazupon/vue-validator/compare/v3.0.0-alpha.1...v3.0.0-alpha.2) (2016-12-26)
+
+
+### :boom: Breaking changes
+
+* not support v-model integration for v3 ([0b152bc](https://github.com/kazupon/vue-validator/commit/0b152bc))
+
+
+### :bug: Bug Fixes
+
+* **mapValidation:** fix typeError [ci skip] ([853b7b3](https://github.com/kazupon/vue-validator/commit/853b7b3)), closes [#340](https://github.com/kazupon/vue-validator/issues/340)
+* **validation:** fix unregsiter error [ci skip] ([39ba1ab](https://github.com/kazupon/vue-validator/commit/39ba1ab)), closes [#336](https://github.com/kazupon/vue-validator/issues/336) [#338](https://github.com/kazupon/vue-validator/issues/338) [#347](https://github.com/kazupon/vue-validator/issues/347)
+
+
+### :star: New Features
+
+* **validator:** toogle support for required validator ([541411e](https://github.com/kazupon/vue-validator/commit/541411e)), closes [#258](https://github.com/kazupon/vue-validator/issues/258)
+* manually touch with API [ci skip] ([484d360](https://github.com/kazupon/vue-validator/commit/484d360))
+* support v-model validation result [ci skip] ([bfe63e2](https://github.com/kazupon/vue-validator/commit/bfe63e2))
+
+
+### :up: Updates
+
+* **examples:** valudator rule ignoring cases ([6963747](https://github.com/kazupon/vue-validator/commit/6963747))
+* **validate:** add internal validate methods [ci skip] ([68b15c3](https://github.com/kazupon/vue-validator/commit/68b15c3))
+* change to my repository name [ci skip] ([98dba92](https://github.com/kazupon/vue-validator/commit/98dba92))
+
+
+### :zap: Improvements
+
+* **component:** fix component validation [ci skip] ([53258ea](https://github.com/kazupon/vue-validator/commit/53258ea))
+* **data:** add progress data [ci skip] ([f2d2164](https://github.com/kazupon/vue-validator/commit/f2d2164))
+
+
+
+<a name="3.0.0-alpha.1"></a>
+# [3.0.0-alpha.1](https://github.com/vuejs/vue-validator/compare/v2.1.3...v3.0.0-alpha.1) (2016-10-24)
+
+This is the first release of 3.0 for Vue 2.0
+
+- There are still some features bugs. Some features still needs to be worked on.
+    - v-model integration
+    - comonent validation
+- **NOT** recommended for production using.
+- There are not still official documetation. Documentation still needs to be worked on.
+- There are example codes. see the [here](https://github.com/vuejs/vue-validator/tree/dev/examples)
+
+
+<a name="2.1.7"></a>
+## [2.1.7](https://github.com/vuejs/vue-validator/compare/v2.1.6...v2.1.7) (2016-09-09)
+
+
+### :bug: Bug Fixes
+
+* **reset:** fix cannot reset with using initial params and v-model ([4c6c793](https://github.com/vuejs/vue-validator/commit/4c6c793))
+
+
+
+<a name="2.1.6"></a>
+## [2.1.6](https://github.com/vuejs/vue-validator/compare/v2.1.5...v2.1.6) (2016-08-19)
+
+
+### :bug: Bug Fixes
+
+* **validate:** fix initial compilation error ([fa99a91](https://github.com/vuejs/vue-validator/commit/fa99a91)), closes [#288](https://github.com/vuejs/vue-validator/issues/288)
+
+
+
+<a name="2.1.5"></a>
+## [2.1.5](https://github.com/vuejs/vue-validator/compare/v2.1.4...v2.1.5) (2016-07-25)
+
+
+### :bug: Bug Fixes
+
+* **validate:** fix cannot change validation rule and error message ([7013c4e](https://github.com/vuejs/vue-validator/commit/7013c4e))
+
+
+
+<a name="2.1.4"></a>
+## [2.1.4](https://github.com/vuejs/vue-validator/compare/v2.1.3...v2.1.4) (2016-07-19)
+
+
+### :bug: Bug Fixes
+
+* **validator:** fix dynamic custom validator error ([b5d5487](https://github.com/vuejs/vue-validator/commit/b5d5487)), closes [#274](https://github.com/vuejs/vue-validator/issues/274)
+
+
+<a name="2.1.3"></a>
+## [2.1.3](https://github.com/vuejs/vue-validator/compare/v2.1.2...v2.1.3) (2016-05-29)
+
+
+### :bug: Bug Fixes
+
+* **validate:** fix multi element fragment bug ([312a000](https://github.com/vuejs/vue-validator/commit/312a000)), closes [#243](https://github.com/vuejs/vue-validator/issues/243)
+
+
+
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/vuejs/vue-validator/compare/v2.1.1...v2.1.2) (2016-05-21)
+
+
+### :bug: Bug Fixes
+
+* **cleanup:** fix cannot get validation result ([33c71d1](https://github.com/vuejs/vue-validator/commit/33c71d1))
+* **errors:** fix cannot apply validation classes ([af91d57](https://github.com/vuejs/vue-validator/commit/af91d57)), closes [#239](https://github.com/vuejs/vue-validator/issues/239)
+* **event:** fix cannot fire top level events ([b91d36a](https://github.com/vuejs/vue-validator/commit/b91d36a)), closes [#233](https://github.com/vuejs/vue-validator/issues/233)
+* **group:** fix group validation for radio ([1fbfc53](https://github.com/vuejs/vue-validator/commit/1fbfc53)), closes [#234](https://github.com/vuejs/vue-validator/issues/234)
+
+
+### :zap: Improvements
+
+* **async:** update async validator for function I/F ([974cf61](https://github.com/vuejs/vue-validator/commit/974cf61))
+* **errors:** error messages order ([b1add7d](https://github.com/vuejs/vue-validator/commit/b1add7d)), closes [#240](https://github.com/vuejs/vue-validator/issues/240)
+* **warning:** changed warning for when the elements under validation are not wrapped in a <validator> element. ([#224](https://github.com/vuejs/vue-validator/issues/224)) by [@SERVANT14](https://github.com/SERVANT14) ([ec1f223](https://github.com/vuejs/vue-validator/commit/ec1f223))
+
+
+### NOTE
+
+* cleanup: warning: not fixes validation result outside available yet
+
+
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/vuejs/vue-validator/compare/v2.1.0...v2.1.1) (2016-05-02)
+
+### :bug: Bug Fixes
+
+* **timing:** fix the initiali timing when use v-model integration ([0579685](https://github.com/vuejs/vue-validator/commit/0579685)), closes [#214](https://github.com/vuejs/vue-validator/issues/214)
+
+
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/vuejs/vue-validator/compare/v2.0.2...v2.1.0) (2016-04-30)
+
+
+### Bug Fixes
+
+* **initial:** cannot work 'initial="off"' on the checkbox([0d705d8](https://github.com/vuejs/vue-validator/commit/0d705d8)), closes [#208](https://github.com/vuejs/vue-validator/issues/208)
+* **v-validate:** friendly error for field name missing ([#205](https://github.com/vuejs/vue-validator/issues/205)) by [@xjchengo](https://github.com/xjchengo)([35c01d3](https://github.com/vuejs/vue-validator/commit/35c01d3))
+
+
+### Features
+
+* **active:** add validation active classes([5a71499](https://github.com/vuejs/vue-validator/commit/5a71499))
+* **api:** fix $validate API when using touched ([#211](https://github.com/vuejs/vue-validator/issues/211)) by [@losadaem](https://github.com/losadaem)([68282d1](https://github.com/vuejs/vue-validator/commit/68282d1)), closes [(#211](https://github.com/(/issues/211)
+* **classes:** add custom validation classes([1d52746](https://github.com/vuejs/vue-validator/commit/1d52746))
+* **classes:** add validation classes([85fe201](https://github.com/vuejs/vue-validator/commit/85fe201))
+* **validator:** add classes params to validator element directive([6103e8d](https://github.com/vuejs/vue-validator/commit/6103e8d))
+
+
+
 <a name="2.0.2"></a>
 ## [2.0.2](https://github.com/vuejs/vue-validator/compare/v2.0.1...v2.0.2) (2016-04-20)
 
